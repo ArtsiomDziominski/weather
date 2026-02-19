@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 // baseURL is the OpenWeatherMap Current Weather endpoint.
@@ -93,7 +94,9 @@ func Display(w *WeatherResponse) {
 		description = string(description[0]-32) + description[1:] // ASCII uppercase of first byte (safe for all-ASCII weather descriptions)
 	}
 
+	now := time.Now()
 	fmt.Printf("City:        %s\n", w.Name)
+	fmt.Printf("Time:        %s\n", now.Format("02 Jan 2006, 15:04"))
 	fmt.Printf("Temperature: %.1f°C\n", w.Main.Temp)
 	fmt.Printf("Feels like:  %.1f°C\n", w.Main.FeelsLike)
 	fmt.Printf("Weather:     %s\n", description)

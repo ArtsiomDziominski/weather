@@ -1,0 +1,6 @@
+# Don't commit your API key to version control
+.env
+
+# Built binary
+weather.exe
+weather
